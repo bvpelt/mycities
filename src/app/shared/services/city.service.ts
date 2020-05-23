@@ -1,51 +1,64 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { City } from '../model/city.model';
+import { Meta } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
 
-  sub$: Observable<City[]> = null;
-
-  private cities: City[] = [
-    new City(1, 'Groningen', 'GR', 'assets/Groningen.jpg'),
-    new City(2, 'Hengelo', 'OV', 'assets/Hengelo.jpg'),
-    new City(3, 'Den Haag', 'ZH', 'assets/DenHaag.jpg'),
-    new City(4, 'Enschede', 'OV', 'assets/Enschede.jpg')
-  ];
+  url: string = 'http://localhost:3000/cities';
+  sub$: Observable<City[] | any> = null;
 
   constructor(private http: HttpClient) { }
 
-  getCities(): Observable<City[]> {
+  getCities(): Observable<City[] | any> {
     this.sub$ = this.http
-      .get<City[]>('./assets/data/cities.json')
-      .pipe(
-        tap(result => console.log('Opgehaald via JSON: ', result))
-      );
-
+      .get<City[]>(this.url).pipe(
+        tap(result => console.log('Opgehaald via: ', this.url, ' result:', result)),
+        catchError(err => {
+          console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+          // De methode moet een observable terug geven
+          // genereer daarom een observable op basis van err
+          return of(err);
+        }));
     return this.sub$;
   }
 
-  getCity(id: number): City {
-    return this.cities.find(c => c.id === id);
+  getCity(id: number): Observable<City | any> {
+    return this.http.get<City>(`${this.url}/${id}`).pipe(
+      tap(result => console.log('Opgehaald via: ', this.url, '/', id, ' result:', result)),
+      catchError(err => {
+        console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        // De methode moet een observable terug geven
+        // genereer daarom een observable op basis van err
+        return of(err);
+      }));
   }
 
-  addCity(name: string): void {
-    let addedCity = new City(
-      this.cities.length + 1,
-      name,
-      'Onbekend');
-    this.cities.push(addedCity);
+  addCity(city: City): Observable<City | any> {
+    return this.http.post<City>(this.url, city).pipe(
+      tap(result => console.log('Created via: ', this.url, ' result:', result)),
+      catchError(err => {
+        console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        // De methode moet een observable terug geven
+        // genereer daarom een observable op basis van err
+        return of(err);
+      }));
+    //this.cities.push(addedCity);
   }
 
-  removeCity(city: City): void {
-    var index: number = this.cities.findIndex(c => c.id === city.id);
-    if (index) {
-      this.cities.splice(index, 1);
-    }
+  removeCity(city: City): Observable<any> {
+    return this.http.delete<City>(`${this.url}/${city.id}`).pipe(
+      tap(result => console.log('Deleted via: ', this.url, '/', city.id, ' result:', result)),
+      catchError(err => {
+        console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        // De methode moet een observable terug geven
+        // genereer daarom een observable op basis van err
+        return of(err);
+      }));
   }
 }

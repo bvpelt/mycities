@@ -13,7 +13,7 @@ export class MovieService {
 
   dataurl: string = 'http://www.omdbapi.com/?apikey=' + this.imdbkey + '&';
   posterurl: string = 'http://img.omdbapi.com/?apikey=' + this.imdbkey + '&';
-
+  tmdburl: string = 'https://api.themoviedb.org/3/movie/550?api_key=5749c32630671e3483d9decf0d034c33&language=en-US'
   movies$: Observable<Movie[]>;
 
   constructor(private http: HttpClient) { }
