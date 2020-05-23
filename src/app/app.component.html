@@ -1,5 +1,4 @@
-<!--
-  <div class="container">
+<div class="container">
   <h1>{{title}}</h1>
   <ul class="list-group" *ngIf="showCities">
     <div class="list-group" *ngFor="let city of cities$ | async; let i=index">
@@ -7,7 +6,9 @@
         {{ city.name}} ( {{city.province}} )
         <span class="pull-right">
           <button type="button" class="btn btn-xs btn-danger" (click)="verwijderCity(city)">
-            x
+
+            <fa-icon [icon]="trashIcon"></fa-icon>
+
           </button>
         </span>
       </a>
@@ -16,9 +17,14 @@
   <h2 *ngIf="showCities">Jij hebt veel steden!</h2>
   <div class="form-group">
     <label for="newcity">New City</label>
-    <input type="text" [(ngModel)]="newCity" class="form-control" placeholder="Nieuwe stad.." id="newcity"> <br />
-    <h2>{{newCity}}</h2>
+    <input type="text" [(ngModel)]="newCity" class="form-control" placeholder="Nieuwe stad..." id="newcity"> <br />
   </div>
+  <div class="form-group">
+    <label for="newprovince">New Province</label>
+    <input type="text" [(ngModel)]="newProvince" class="form-control" placeholder="Nieuwe provincie..."
+      id="newprovince"> <br />
+  </div>
+
   <div class="btn-group">
     <button type="button" class="btn btn-primary" (click)="addCity()">Stad toevoegen</button>
     <button type="button" class="btn btn-primary" (click)="order()">Bestel</button>
@@ -26,12 +32,18 @@
   <div class="checkbox">
     <label><input type="checkbox" (change)="toggleCities()"> {{toggleMsg}}</label>
   </div>
-  <div *ngIf="currentCity && currentCity.photo">
-    <img src={{currentCity.photo}} class="img-responsive img-rounded" alt="{{currentCity.name}}" width="100%">
+  <div *ngIf="currentCity">
     <h2>Gekozen stad: {{currentCity.name}}</h2>
+    <p>
+      De door uw gekozen stad ligt in de provincie: {{currentCity.province}}
+    </p>
+    <div *ngIf="currentCity.photo">
+      <img src={{currentCity.photo}} class="img-responsive img-rounded" alt="{{currentCity.name}}" width="100%">
+    </div>
   </div>
 </div>
--->
+<!--
 <div class="container">
   <app-movie></app-movie>
 </div>
+-->

@@ -5,4 +5,5 @@ button {
 .pull-right {
     position: absolute;
     right: 0px;
+    top: 6px;
 }

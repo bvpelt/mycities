@@ -5,6 +5,7 @@ import { tap, retry, delay } from 'rxjs/operators';
 
 import { City } from './shared/model/city.model';
 import { CityService } from './shared/services/city.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,12 @@ import { CityService } from './shared/services/city.service';
 export class AppComponent implements OnInit, OnDestroy {
   title: string;
   newCity: string;
+  newProvince: string;
   currentCity: City;
   cities$: Observable<City[]>;
   showCities: boolean = true;
   toggleMsg: string = ' lijst met steden';
+  trashIcon = faTrash;
 
   constructor(private cityService: CityService) {
   }
@@ -25,7 +28,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title = 'Mijn favoriete steden';
     this.cities$ = this.cityService.getCities();
-
   }
 
   ngOnDestroy() {
@@ -51,9 +53,41 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addCity(): void {
-
+    let currentCity: City = new City(null,
+      this.newCity,
+      this.newProvince);
+    this.cityService.addCity(currentCity)
+      .subscribe(
+        res => {
+          console.log('Added city ', currentCity.name);
+          // get new list
+          this.cities$ = this.cityService.getCities();
+        },
+        err => {
+          console.error('Error during adding city ', currentCity.name, ': ', err);
+        },
+        () => {
+          console.log('addCity ready');
+          this.newCity = null;
+          this.newProvince = null;
+        }
+      )
   }
 
   verwijderCity(city: City): void {
+    this.cityService.removeCity(city)
+      .subscribe(
+        res => {
+          console.log('Removed city ', city.name);
+          // get new list
+          this.cities$ = this.cityService.getCities();
+        },
+        err => {
+          console.error('Error during removing city ', city.name, ': ', err);
+        },
+        () => {
+          console.log('verwijderCity ready');
+        }
+      )
   }
 }
