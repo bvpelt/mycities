@@ -1,0 +1,37 @@
+<!--
+  <div class="container">
+  <h1>{{title}}</h1>
+  <ul class="list-group" *ngIf="showCities">
+    <div class="list-group" *ngFor="let city of cities$ | async; let i=index">
+      <a class="list-group-item clearfix" (click)="showCity(city);">
+        {{ city.name}} ( {{city.province}} )
+        <span class="pull-right">
+          <button type="button" class="btn btn-xs btn-danger" (click)="verwijderCity(city)">
+            x
+          </button>
+        </span>
+      </a>
+    </div>
+  </ul>
+  <h2 *ngIf="showCities">Jij hebt veel steden!</h2>
+  <div class="form-group">
+    <label for="newcity">New City</label>
+    <input type="text" [(ngModel)]="newCity" class="form-control" placeholder="Nieuwe stad.." id="newcity"> <br />
+    <h2>{{newCity}}</h2>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary" (click)="addCity()">Stad toevoegen</button>
+    <button type="button" class="btn btn-primary" (click)="order()">Bestel</button>
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox" (change)="toggleCities()"> {{toggleMsg}}</label>
+  </div>
+  <div *ngIf="currentCity && currentCity.photo">
+    <img src={{currentCity.photo}} class="img-responsive img-rounded" alt="{{currentCity.name}}" width="100%">
+    <h2>Gekozen stad: {{currentCity.name}}</h2>
+  </div>
+</div>
+-->
+<div class="container">
+  <app-movie></app-movie>
+</div>

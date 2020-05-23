@@ -1,0 +1,47 @@
+<h1>Movies</h1>
+
+<div class="form-group">
+    <label for="searchMovie">Keyword</label>
+    <input type="text" [(ngModel)]="keyword" class="form-control" placeholder="Keyword..." id="searchMovie"> <br />
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" (click)="findMovie()">Find movie</button>
+</div>
+<div *ngIf=movies$>
+    <ul class="list-group" *ngFor="let movie of movies$ | async; let i=index">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Title: {{ movie.Title }} year: {{ movie.Year }}</h4>
+                <p *ngIf="movie.Type" class="card-text">Type: {{ movie.Type}}</p>
+            </div>
+            <div class="card-body">
+                <div class="row>">
+                    <div class="col-sm-8">
+                        <p>Details</p>
+                        <p *ngIf="movie.Rated">Rated {{movie.Rated}}</p>
+                        <p *ngIf="movie.Released">Released {{movie.Released}}</p>
+                        <p *ngIf="movie.Runtime">Runtime {{movie.Runtime}}</p>
+                        <p *ngIf="movie.Genre">Genre {{movie.Genre}}</p>
+                        <p *ngIf="movie.Director">Director {{movie.Director}}</p>
+                        <p *ngIf="movie.Writer">Writer {{movie.Writer}}</p>
+                        <p *ngIf="movie.Actors">Actors {{movie.Actors}}</p>
+                        <p *ngIf="movie.Plot">Plot {{movie.Plot}}</p>
+                        <p *ngIf="movie.Language">Language {{movie.Language}}</p>
+                        <p *ngIf="movie.Country">Country {{movie.Country}}</p>
+                        <p *ngIf="movie.Awards">Awards {{movie.Awards}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <div *ngIf="posterAvailable(movie)">
+                            <img src={{movie.Poster}} class=" img-responsive img-rounded" alt="{{movie.Title}}"
+                                width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p *ngIf="movie.imdbID" class="card-text bg-primary"><a
+                        href="https://www.imdb.com/title/{{ movie.imdbID}}">imdb link</a></p>
+            </div>
+        </div>
+    </ul>
+</div>
