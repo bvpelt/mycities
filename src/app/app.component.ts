@@ -5,7 +5,7 @@ import { tap, retry, delay } from 'rxjs/operators';
 
 import { City } from './shared/model/city.model';
 import { CityService } from './shared/services/city.service';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +17,12 @@ export class AppComponent implements OnInit, OnDestroy {
   newCity: string;
   newProvince: string;
   currentCity: City;
+  showCurrentCity: City;
   cities$: Observable<City[]>;
   showCities: boolean = true;
   toggleMsg: string = ' lijst met steden';
   trashIcon = faTrash;
+  editIcon = faEdit;
 
   constructor(private cityService: CityService) {
   }
@@ -45,11 +47,15 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   showCity(city: City): void {
-    this.currentCity = city;
+    this.showCurrentCity = city;
   }
 
-  changeCity(value: string): void {
-    this.newCity = value;
+  updateCity(city: City): void {
+
+  }
+
+  editCity(city: City): void {
+    this.currentCity = city;
   }
 
   addCity(): void {
