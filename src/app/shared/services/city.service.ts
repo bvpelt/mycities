@@ -16,8 +16,12 @@ export class CityService {
   constructor(private http: HttpClient) { }
 
   getCities(): Observable<City[] | any> {
+    let headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Cache-Control', 'max-age=30 must-revalidate');
+
     this.sub$ = this.http
-      .get<City[]>(this.url).pipe(
+      .get<City[]>(this.url, { 'headers': headers }).pipe(
         tap(result => console.log('Opgehaald via: ', this.url, ' result:', result)),
         catchError(err => {
           console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
@@ -29,10 +33,14 @@ export class CityService {
   }
 
   getCity(id: number): Observable<City | any> {
-    return this.http.get<City>(`${this.url}/${id}`).pipe(
+    let headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Cache-Control', 'max-age=30 must-revalidate');
+
+    return this.http.get<City>(`${this.url}/${id}`, { 'headers': headers }).pipe(
       tap(result => console.log('Opgehaald via: ', this.url, '/', id, ' result:', result)),
       catchError(err => {
-        console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        console.log('Get geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
         // De methode moet een observable terug geven
         // genereer daarom een observable op basis van err
         return of(err);
@@ -43,7 +51,19 @@ export class CityService {
     return this.http.post<City>(this.url, city).pipe(
       tap(result => console.log('Created via: ', this.url, ' result:', result)),
       catchError(err => {
-        console.log('Geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        console.log('Add geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+        // De methode moet een observable terug geven
+        // genereer daarom een observable op basis van err
+        return of(err);
+      }));
+    //this.cities.push(addedCity);
+  }
+
+  updateCity(city: City): Observable<City | any> {
+    return this.http.put<City>(this.url + '/' + city.id, city).pipe(
+      tap(result => console.log('update via: ', this.url, ' result:', result)),
+      catchError(err => {
+        console.log('Update geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
         // De methode moet een observable terug geven
         // genereer daarom een observable op basis van err
         return of(err);

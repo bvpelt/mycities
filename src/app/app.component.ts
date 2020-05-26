@@ -51,7 +51,22 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   updateCity(city: City): void {
-
+    console.log('Update city - id: ', city.id, ' name: ', city.name, ' province: ', city.province, ' photo: ', city.photo);
+    this.cityService.updateCity(city)
+      .subscribe(
+        res => {
+          console.log('Updated city ', city.name);
+          // get new list
+          this.cities$ = this.cityService.getCities();
+        },
+        err => {
+          console.error('Error during adding city ', city.name, ': ', err);
+        },
+        () => {
+          console.log('updateCity ready');
+          this.currentCity = null;
+        }
+      )
   }
 
   editCity(city: City): void {

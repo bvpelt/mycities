@@ -3,36 +3,36 @@
     {
       "id": 1,
       "name": "Groningen",
-      "province": "GR",
+      "province": "Groningen",
       "photo": "assets/Groningen.jpg"
     },
     {
       "id": 2,
       "name": "Den Haag",
-      "province": "GR",
+      "province": "Zuid Holland",
       "photo": "assets/DenHaag.jpg"
     },
     {
       "id": 3,
       "name": "Enschede",
-      "province": "OV",
+      "province": "Overijssel",
       "photo": "assets/Enschede.jpg"
     },
     {
       "id": 4,
       "name": "Hengelo",
-      "province": "OV",
+      "province": "Overijssel",
       "photo": "assets/Hengelo.jpg"
     },
     {
       "id": 5,
       "name": "Haarlem",
-      "province": "ZH"
+      "province": "Zuid Holland"
     },
     {
       "id": 6,
       "name": "Amsterdam",
-      "province": "NH"
+      "province": "Noord Holland"
     }
   ]
 }
