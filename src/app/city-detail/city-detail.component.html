@@ -1,0 +1,16 @@
+<h4>Details</h4>
+<ul class="list-group">
+    <li class="list-group-item">Naam: {{city.name}}</li>
+    <li class="list-group-item">Provincie: {{city.province}}</li>
+    <!-- <li class="list-group-item">Highlights: {{city.highlights}}</li> -->
+    <div *ngIf="showHighLights()">
+        <li class="list-group-item">Highlights</li>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let highlight of city.highlights">{{highlight}}</li>
+        </ul>
+    </div>
+    <li class="list-group-item">Photo: {{ city.photo }}</li>
+</ul>
+<div *ngIf="city.photo">
+    <img src={{city.photo}} class="img-responsive img-rounded" alt="{{city.name}}" width="100%">
+</div>

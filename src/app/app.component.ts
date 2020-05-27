@@ -47,6 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   showCity(city: City): void {
+    console.log('Start showCity');
+    this.currentCity = null;
     this.showCurrentCity = city;
   }
 
@@ -70,6 +72,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   editCity(city: City): void {
+    console.log('Start editCity');
+    this.showCurrentCity = null;
     this.currentCity = city;
   }
 

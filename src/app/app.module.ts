@@ -9,14 +9,16 @@ import { CustomerComponent } from './customer/customer.component';
 import { OrderComponent } from './order/order.component';
 import { CityService } from './shared/services/city.service';
 import { MovieComponent } from './movie/movie.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CityDetailComponent } from './city-detail/city-detail.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     OrderComponent,
-    MovieComponent
+    MovieComponent,
+    CityDetailComponent
   ],
   imports: [
     BrowserModule,

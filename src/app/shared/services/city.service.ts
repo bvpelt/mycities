@@ -18,7 +18,7 @@ export class CityService {
   getCities(): Observable<City[] | any> {
     let headers = new HttpHeaders()
       .set('content-type', 'application/json')
-      .set('Cache-Control', 'max-age=30 must-revalidate');
+      .set('Cache-Control', 'public max-age=3 must-revalidate');
 
     this.sub$ = this.http
       .get<City[]>(this.url, { 'headers': headers }).pipe(
@@ -48,7 +48,10 @@ export class CityService {
   }
 
   addCity(city: City): Observable<City | any> {
-    return this.http.post<City>(this.url, city).pipe(
+    let headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+
+    return this.http.post<City>(this.url, city, { 'headers': headers }).pipe(
       tap(result => console.log('Created via: ', this.url, ' result:', result)),
       catchError(err => {
         console.log('Add geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
@@ -60,7 +63,10 @@ export class CityService {
   }
 
   updateCity(city: City): Observable<City | any> {
-    return this.http.put<City>(this.url + '/' + city.id, city).pipe(
+    let headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+
+    return this.http.put<City>(this.url + '/' + city.id, city, { 'headers': headers }).pipe(
       tap(result => console.log('update via: ', this.url, ' result:', result)),
       catchError(err => {
         console.log('Update geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');

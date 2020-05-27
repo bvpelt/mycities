@@ -4,35 +4,68 @@
       "id": 1,
       "name": "Groningen",
       "province": "Groningen",
+      "highlights": [
+        "Martinitoren",
+        "Grote Markt"
+      ],
       "photo": "assets/Groningen.jpg"
     },
     {
       "id": 2,
       "name": "Den Haag",
       "province": "Zuid Holland",
+      "highlights": [
+        "Binnenhof",
+        "Madurodam"
+      ],
       "photo": "assets/DenHaag.jpg"
     },
     {
       "id": 3,
       "name": "Enschede",
       "province": "Overijssel",
+      "highlights": [
+        "Synagoge van Enschede",
+        "Jacobuskerk",
+        "Universiteit",
+        "Vliegbasis"
+      ],
       "photo": "assets/Enschede.jpg"
     },
     {
       "id": 4,
       "name": "Hengelo",
       "province": "Overijssel",
+      "highlights": [
+        "Waterstaatskerk",
+        "Schouwburg Hengelo"
+      ],
       "photo": "assets/Hengelo.jpg"
     },
     {
       "id": 5,
       "name": "Haarlem",
-      "province": "Zuid Holland"
+      "province": "Zuid Holland",
+      "highlights": [
+        "Teylers museum",
+        "Grote Markt",
+        "Frans Hals Museum",
+        "Amsterdamse Poort",
+        "De Waag",
+        "De Koepelgevangenis"
+      ]
     },
     {
       "id": 6,
       "name": "Amsterdam",
-      "province": "Noord Holland"
+      "province": "Noord Holland",
+      "highlights": []
+    },
+    {
+      "id": 7,
+      "name": "Rotterdam",
+      "province": "Zuid Holland",
+      "highlights": []
     }
   ]
 }
