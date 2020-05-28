@@ -7,6 +7,8 @@
           <a class="list-group-item clearfix">
             <div (click)="showCity(city);">
               {{ city.name}} ( {{city.province}} )
+              <span class="badge badge-dark float-right">{{city.posrating}}</span>
+              <span class="badge badge-dark float-right">{{city.negrating}}</span>
             </div>
             <span class="pull-right">
               <button type="button" class="btn btn-xs btn-danger" (click)="editCity(city)">
@@ -19,6 +21,9 @@
           </a>
         </div>
       </ul>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" (click)="clear()">Stad toevoegen</button>
+      </div>
     </div>
     <div class="col-sm-6">
       <div *ngIf="!showCurrentCity">
@@ -52,9 +57,14 @@
             <br />
           </div>
           <div class="form-group">
-            <label for="newprovince">New Province</label>
+            <label for="newprovince">Nieuwe Province</label>
             <input type="text" [(ngModel)]="newProvince" class="form-control" placeholder="Nieuwe provincie..."
               id="newprovince"> <br />
+          </div>
+          <div class="form-group">
+            <label for="newphoto">Nieuwe Photo</label>
+            <input type="text" [(ngModel)]="newPhoto" class="form-control" placeholder="Nieuwe photo..." id="newphoto">
+            <br />
           </div>
           <div class="btn-group">
             <button type="button" class="btn btn-primary" (click)="addCity()">Stad toevoegen</button>
@@ -63,7 +73,8 @@
         </div>
       </div>
       <div *ngIf="showCurrentCity">
-        <app-city-detail [city]="showCurrentCity"></app-city-detail>
+        <app-city-detail [city]="showCurrentCity" (incrementing)="incrementing($event)"
+          (decrementing)="decrementing($event)"></app-city-detail>
       </div>
     </div>
   </div>

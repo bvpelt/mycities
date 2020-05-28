@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title: string;
   newCity: string;
   newProvince: string;
+  newPhoto: string;
   currentCity: City;
   showCurrentCity: City;
   cities$: Observable<City[]>;
@@ -71,6 +72,12 @@ export class AppComponent implements OnInit, OnDestroy {
       )
   }
 
+  clear(): void {
+    console.log('clear');
+    this.showCurrentCity = null;
+    this.currentCity = null;
+  }
+
   editCity(city: City): void {
     console.log('Start editCity');
     this.showCurrentCity = null;
@@ -80,7 +87,11 @@ export class AppComponent implements OnInit, OnDestroy {
   addCity(): void {
     let currentCity: City = new City(null,
       this.newCity,
-      this.newProvince);
+      this.newProvince,
+      0,
+      0,
+      null,
+      this.newPhoto);
     this.cityService.addCity(currentCity)
       .subscribe(
         res => {
@@ -115,4 +126,15 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       )
   }
+
+  incrementing(by: number): void {
+    console.log('increment by: ', by);
+    this.showCurrentCity.posrating += by;
+  }
+
+  decrementing(by: number): void {
+    console.log('decrement by: ', by);
+    this.showCurrentCity.negrating += by;
+  }
+
 }
