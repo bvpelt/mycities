@@ -1,47 +1,101 @@
 <div class="container">
-  <h1>{{title}}</h1>
-  <ul class="list-group" *ngIf="showCities">
-    <div class="list-group" *ngFor="let city of cities$ | async; let i=index">
-      <a class="list-group-item clearfix" (click)="showCity(city);">
-        {{ city.name}} ( {{city.province}} )
-        <span class="pull-right">
-          <button type="button" class="btn btn-xs btn-danger" (click)="verwijderCity(city)">
-
-            <fa-icon [icon]="trashIcon"></fa-icon>
-
-          </button>
-        </span>
-      </a>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>{{title}}</h1>
+      <ul class="list-group" *ngIf="showCities">
+        <div class="list-group" *ngFor="let city of cities$ | async; let i=index">
+          <a class="list-group-item clearfix">
+            <div (click)="showCity(city);">
+              {{ city.name}} ( {{city.province}} )
+              <span class="badge badge-dark float-right">{{city.posrating}}</span>
+              <span class="badge badge-dark float-right">{{city.negrating}}</span>
+            </div>
+            <span class="pull-right">
+              <button type="button" class="btn btn-xs btn-danger" (click)="editCity(city)">
+                <fa-icon [icon]="editIcon"></fa-icon>
+              </button>
+              <button type="button" class="btn btn-xs btn-danger" (click)="verwijderCity(city)">
+                <fa-icon [icon]="trashIcon"></fa-icon>
+              </button>
+            </span>
+          </a>
+        </div>
+      </ul>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" (click)="clear()">Stad toevoegen</button>
+      </div>
     </div>
-  </ul>
+    <div class="col-sm-6">
+      <div *ngIf="!showCurrentCity">
+        <div *ngIf="currentCity">
+          <h2>Edit bestaande stad</h2>
+          <div class="form-group">
+            <label for="newcity">Stad</label>
+            <input type="text" [(ngModel)]="currentCity.name" class="form-control" placeholder="Verander stad..."
+              id="newcity">
+          </div>
+          <div class="form-group">
+            <label for="newprovince">Provincie</label>
+            <input type="text" [(ngModel)]="currentCity.province" class="form-control"
+              placeholder="Verander provincie..." id="newprovince">
+          </div>
+          <div class="form-group">
+            <label for="newprice">Prijs</label>
+            <input type="text" [(ngModel)]="currentCity.price" class="form-control" placeholder="Verander prijs..."
+              id="newprice">
+          </div>
+          <div class="form-group">
+            <label for="newphoto">Photo</label>
+            <input type="text" [(ngModel)]="currentCity.photo" class="form-control" placeholder="Verander photo..."
+              id="newphoto">
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" (click)="updateCity(currentCity)">Stad updaten</button>
+          </div>
+        </div>
+        <div *ngIf="!currentCity">
+          <h2>Toevoegen nieuwe stad</h2>
+          <div class="form-group">
+            <label for="newcity">Nieuwe Stad</label>
+            <input type="text" [(ngModel)]="newCity" class="form-control" placeholder="Nieuwe stad..." id="newcity">
+          </div>
+          <div class="form-group">
+            <label for="newprovince">Nieuwe Province</label>
+            <input type="text" [(ngModel)]="newProvince" class="form-control" placeholder="Nieuwe provincie..."
+              id="newprovince">
+          </div>
+          <div class="form-group">
+            <label for="newprice">Nieuwe Prijs</label>
+            <input type="text" [(ngModel)]="newPrice" class="form-control" placeholder="Nieuwe prijs..." id="newprice">
+          </div>
+          <div class="form-group">
+            <label for="newphoto">Nieuwe Photo</label>
+            <input type="text" [(ngModel)]="newPhoto" class="form-control" placeholder="Nieuwe photo..." id="newphoto">
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" (click)="addCity()">Stad toevoegen</button>
+            <button type="button" class="btn btn-primary" (click)="order()">Bestel</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showCurrentCity">
+        <app-city-detail [city]="showCurrentCity" (incrementing)="incrementing($event)"
+          (decrementing)="decrementing($event)"></app-city-detail>
+      </div>
+    </div>
+  </div>
+  <app-city-order></app-city-order>
   <h2 *ngIf="showCities">Jij hebt veel steden!</h2>
-  <div class="form-group">
-    <label for="newcity">New City</label>
-    <input type="text" [(ngModel)]="newCity" class="form-control" placeholder="Nieuwe stad..." id="newcity"> <br />
-  </div>
-  <div class="form-group">
-    <label for="newprovince">New Province</label>
-    <input type="text" [(ngModel)]="newProvince" class="form-control" placeholder="Nieuwe provincie..."
-      id="newprovince"> <br />
-  </div>
-
-  <div class="btn-group">
-    <button type="button" class="btn btn-primary" (click)="addCity()">Stad toevoegen</button>
-    <button type="button" class="btn btn-primary" (click)="order()">Bestel</button>
-  </div>
   <div class="checkbox">
     <label><input type="checkbox" (change)="toggleCities()"> {{toggleMsg}}</label>
   </div>
-  <div *ngIf="currentCity">
-    <h2>Gekozen stad: {{currentCity.name}}</h2>
-    <p>
-      De door uw gekozen stad ligt in de provincie: {{currentCity.province}}
-    </p>
-    <div *ngIf="currentCity.photo">
-      <img src={{currentCity.photo}} class="img-responsive img-rounded" alt="{{currentCity.name}}" width="100%">
-    </div>
+  <div *ngIf="showCurrentCity">
+    <app-city-detail [city]="showCurrentCity"></app-city-detail>
   </div>
 </div>
+
+
+
 <!--
 <div class="container">
   <app-movie></app-movie>

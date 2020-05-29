@@ -5,7 +5,7 @@ import { tap, retry, delay } from 'rxjs/operators';
 
 import { City } from './shared/model/city.model';
 import { CityService } from './shared/services/city.service';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +16,15 @@ export class AppComponent implements OnInit, OnDestroy {
   title: string;
   newCity: string;
   newProvince: string;
+  newPhoto: string;
+  newPrice: number;
   currentCity: City;
+  showCurrentCity: City;
   cities$: Observable<City[]>;
   showCities: boolean = true;
   toggleMsg: string = ' lijst met steden';
   trashIcon = faTrash;
+  editIcon = faEdit;
 
   constructor(private cityService: CityService) {
   }
@@ -45,17 +49,51 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   showCity(city: City): void {
-    this.currentCity = city;
+    console.log('Start showCity');
+    this.currentCity = null;
+    this.showCurrentCity = city;
   }
 
-  changeCity(value: string): void {
-    this.newCity = value;
+  updateCity(city: City): void {
+    console.log('Update city - id: ', city.id, ' name: ', city.name, ' province: ', city.province, ' photo: ', city.photo);
+    this.cityService.updateCity(city)
+      .subscribe(
+        res => {
+          console.log('Updated city ', city.name);
+          // get new list
+          this.cities$ = this.cityService.getCities();
+        },
+        err => {
+          console.error('Error during adding city ', city.name, ': ', err);
+        },
+        () => {
+          console.log('updateCity ready');
+          this.currentCity = null;
+        }
+      )
+  }
+
+  clear(): void {
+    console.log('clear');
+    this.showCurrentCity = null;
+    this.currentCity = null;
+  }
+
+  editCity(city: City): void {
+    console.log('Start editCity');
+    this.showCurrentCity = null;
+    this.currentCity = city;
   }
 
   addCity(): void {
     let currentCity: City = new City(null,
       this.newCity,
-      this.newProvince);
+      this.newProvince,
+      this.newPrice,
+      0,
+      0,
+      null,
+      this.newPhoto);
     this.cityService.addCity(currentCity)
       .subscribe(
         res => {
@@ -90,4 +128,15 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       )
   }
+
+  incrementing(by: number): void {
+    console.log('increment by: ', by);
+    this.showCurrentCity.posrating += by;
+  }
+
+  decrementing(by: number): void {
+    console.log('decrement by: ', by);
+    this.showCurrentCity.negrating += by;
+  }
+
 }

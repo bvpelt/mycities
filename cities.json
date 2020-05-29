@@ -3,36 +3,99 @@
     {
       "id": 1,
       "name": "Groningen",
-      "province": "GR",
+      "province": "Groningen",
+      "price": 99,
+      "posrating": 6,
+      "negrating": 3,
+      "highlights": [
+        "Martinitoren",
+        "Grote Markt"
+      ],
       "photo": "assets/Groningen.jpg"
     },
     {
       "id": 2,
       "name": "Den Haag",
-      "province": "GR",
+      "province": "Zuid Holland",
+      "price": 139,
+      "posrating": 0,
+      "negrating": 0,
+      "highlights": [
+        "Binnenhof",
+        "Madurodam"
+      ],
       "photo": "assets/DenHaag.jpg"
     },
     {
       "id": 3,
       "name": "Enschede",
-      "province": "OV",
+      "province": "Overijssel",
+      "price": 87,
+      "posrating": 22,
+      "negrating": 23,
+      "highlights": [
+        "Synagoge van Enschede",
+        "Jacobuskerk",
+        "Universiteit",
+        "Vliegbasis"
+      ],
       "photo": "assets/Enschede.jpg"
     },
     {
       "id": 4,
       "name": "Hengelo",
-      "province": "OV",
+      "province": "Overijssel",
+      "price": 76,
+      "posrating": 0,
+      "negrating": 0,
+      "highlights": [
+        "Waterstaatskerk",
+        "Schouwburg Hengelo"
+      ],
       "photo": "assets/Hengelo.jpg"
     },
     {
       "id": 5,
       "name": "Haarlem",
-      "province": "ZH"
+      "province": "Zuid Holland",
+      "price": 92,
+      "posrating": 0,
+      "negrating": 0,
+      "highlights": [
+        "Teylers museum",
+        "Grote Markt",
+        "Frans Hals Museum",
+        "Amsterdamse Poort",
+        "De Waag",
+        "De Koepelgevangenis"
+      ]
     },
     {
       "id": 6,
       "name": "Amsterdam",
-      "province": "NH"
+      "province": "Noord Holland",
+      "price": 168,
+      "posrating": 0,
+      "negrating": 0,
+      "highlights": []
+    },
+    {
+      "id": 7,
+      "name": "Rotterdam",
+      "province": "Zuid Holland",
+      "price": 152,
+      "posrating": 0,
+      "negrating": 0,
+      "highlights": []
+    },
+    {
+      "id": 8,
+      "name": "Veenendaal",
+      "province": "Utrecht",
+      "price": 69,
+      "posrating": 4,
+      "negrating": 2,
+      "highlights": null
     }
   ]
 }

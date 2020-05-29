@@ -9,6 +9,8 @@
 - web events [developer.mozilla.org/en-US/docs/Web/Events](https://developer.mozilla.org/en-US/docs/Web/Events)
 - http client [alligator.io/angular/httpclient-intro](https://alligator.io/angular/httpclient-intro)
 - httpclient example [appdividend.com](https://appdividend.com/2019/06/06/angular-8-httpclient-example-how-to-send-ajax-request-in-angular/)
+- httpclient example [www.techiediaries.com/angular-http-client/](https://www.techiediaries.com/angular-http-client/)
+- httpheaders example [www.tektutorialshub.com/angular/angular-httpheaders/](https://www.tektutorialshub.com/angular/angular-httpheaders/)
 - json to typescript [www.json2ts.com/](http://www.json2ts.com/)
 - json-server [github.com/typicode/json-server](https://github.com/typicode/json-server)
 - icon generator [www.favicon-generator.org/](https://www.favicon-generator.org/)

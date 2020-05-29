@@ -1,0 +1,29 @@
+<div *ngIf="currentOrders.length > 0">
+    <h2>Uw boekingen</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Trip naar</th>
+                    <th>Aantal</th>
+                    <th>Prijs €</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of currentOrders">
+                    <td>{{order.city.name}}</td>
+                    <td>{{order.numBookings}}</td>
+                    <td>{{order.city.price}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Totaal</td>
+                    <td><strong>{{totalPrice}}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" (click)="cancel()">Annuleren</button>
+            <button type="button" class="btn btn-primary" (click)="confirm()">Bevestigen</button>
+        </div>
+    </div>
+</div>
