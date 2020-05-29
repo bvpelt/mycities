@@ -4,8 +4,9 @@
       "id": 1,
       "name": "Groningen",
       "province": "Groningen",
-      "posrating": 0,
-      "negrating": 0,
+      "price": 99,
+      "posrating": 6,
+      "negrating": 3,
       "highlights": [
         "Martinitoren",
         "Grote Markt"
@@ -16,6 +17,7 @@
       "id": 2,
       "name": "Den Haag",
       "province": "Zuid Holland",
+      "price": 139,
       "posrating": 0,
       "negrating": 0,
       "highlights": [
@@ -28,6 +30,7 @@
       "id": 3,
       "name": "Enschede",
       "province": "Overijssel",
+      "price": 87,
       "posrating": 22,
       "negrating": 23,
       "highlights": [
@@ -42,6 +45,7 @@
       "id": 4,
       "name": "Hengelo",
       "province": "Overijssel",
+      "price": 76,
       "posrating": 0,
       "negrating": 0,
       "highlights": [
@@ -54,6 +58,7 @@
       "id": 5,
       "name": "Haarlem",
       "province": "Zuid Holland",
+      "price": 92,
       "posrating": 0,
       "negrating": 0,
       "highlights": [
@@ -69,6 +74,7 @@
       "id": 6,
       "name": "Amsterdam",
       "province": "Noord Holland",
+      "price": 168,
       "posrating": 0,
       "negrating": 0,
       "highlights": []
@@ -77,6 +83,7 @@
       "id": 7,
       "name": "Rotterdam",
       "province": "Zuid Holland",
+      "price": 152,
       "posrating": 0,
       "negrating": 0,
       "highlights": []
@@ -85,6 +92,7 @@
       "id": 8,
       "name": "Veenendaal",
       "province": "Utrecht",
+      "price": 69,
       "posrating": 4,
       "negrating": 2,
       "highlights": null

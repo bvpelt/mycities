@@ -10,7 +10,10 @@ import { OrderComponent } from './order/order.component';
 import { CityService } from './shared/services/city.service';
 import { MovieComponent } from './movie/movie.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CityDetailComponent } from './city-detail/city-detail.component'
+import { CityDetailComponent } from './city-detail/city-detail.component';
+import { CityHighlightsComponent } from './city-highlights/city-highlights.component';
+import { CityOrderComponent } from './city-order/city-order.component'
+import { OrderService } from './shared/services/order.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { CityDetailComponent } from './city-detail/city-detail.component'
     CustomerComponent,
     OrderComponent,
     MovieComponent,
-    CityDetailComponent
+    CityDetailComponent,
+    CityHighlightsComponent,
+    CityOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import { CityDetailComponent } from './city-detail/city-detail.component'
     AppRoutingModule,
     FontAwesomeModule
   ],
-  providers: [CityService],
+  providers: [CityService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

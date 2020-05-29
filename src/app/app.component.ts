@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   newCity: string;
   newProvince: string;
   newPhoto: string;
+  newPrice: number;
   currentCity: City;
   showCurrentCity: City;
   cities$: Observable<City[]>;
@@ -88,6 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let currentCity: City = new City(null,
       this.newCity,
       this.newProvince,
+      this.newPrice,
       0,
       0,
       null,

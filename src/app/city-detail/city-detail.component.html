@@ -6,18 +6,20 @@
     <button type="button" class="btn btn-default" (click)="decrementRating()">
         <fa-icon [icon]="thumbsDownIcon"></fa-icon>
     </button>
+    <button type="button" class="btn btn-lg btn-default" (click)="order(city)">
+        Boek nu!
+    </button>
 </div>
 <ul class="list-group list-group-root">
     <li class="list-group-item">Naam: {{city.name}}</li>
+    <li class="list-group-item">Prijs weekend: {{city.price | currency: 'EUR':'symbol':'1.2'}}</li>
     <li class="list-group-item">Positive: {{city.posrating}}</li>
     <li class="list-group-item">Negative: {{city.negrating}}</li>
     <li class="list-group-item">Provincie: {{city.province}}</li>
-    <!-- <li class="list-group-item">Highlights: {{city.highlights}}</li> -->
     <div *ngIf="showHighLights()">
-        <li class="list-group-item">Highlights</li>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let highlight of city.highlights">{{highlight}}</li>
-        </ul>
+        <li class="list-group-item">highlights
+            <app-city-highlights [highlights]="city.highlights"></app-city-highlights>
+        </li>
     </div>
     <li class="list-group-item">Photo: {{ city.photo }}</li>
 </ul>
