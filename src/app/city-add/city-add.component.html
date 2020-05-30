@@ -12,6 +12,19 @@
     <input type="text" [(ngModel)]="price" class="form-control" placeholder="Nieuwe prijs..." id="newprice">
 </div>
 <div class="form-group">
+    <label for="newhighlight">Nieuwe bezienswaardigheid</label>
+    <ul class="list-group" *ngIf="showHighlights()">
+        <li class="list-group-item">
+            <app-city-highlights [highlights]="highlights"></app-city-highlights>
+        </li>
+    </ul>
+    <input type="text" [(ngModel)]="highlight" class="form-control" placeholder="Nieuwe bezienswaardigheid..."
+        id="newhighlight">
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" (click)="addhighlight()">Toevoegen Bezienswaardigheid</button>
+</div>
+<div class="form-group">
     <label for="newphoto">Nieuwe Photo</label>
     <input type="text" [(ngModel)]="photo" class="form-control" placeholder="Nieuwe photo..." id="newphoto">
 </div>

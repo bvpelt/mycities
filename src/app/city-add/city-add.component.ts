@@ -13,7 +13,8 @@ export class CityAddComponent implements OnInit {
   public price: number;
   public posrating: number;
   public negrating: number;
-  public highlights?: string[];
+  public highlights?: string[] = [];
+  public highlight: string;
   public photo?: string;
 
   constructor(private cityService: CityService) { }
@@ -46,5 +47,15 @@ export class CityAddComponent implements OnInit {
           this.photo = null;
         }
       );
+  }
+
+  showHighlights(): boolean {
+    return (this.highlights && (this.highlights.length > 0));
+  }
+
+  addhighlight(): void {
+    console.log('added highlight: ', this.highlight);
+    this.highlights.push(this.highlight);
+    this.highlight = null;
   }
 }

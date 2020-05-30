@@ -16,6 +16,7 @@ export class CityDetailComponent implements OnInit {
   //  @Input() city: City;
   city: City;
   id: number;
+  restrictions: string;
   @Output() incrementing = new EventEmitter<number>();
   @Output() decrementing = new EventEmitter<number>();
 
@@ -27,6 +28,7 @@ export class CityDetailComponent implements OnInit {
     private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.restrictions = 'All rights reserved';
     this.activatedRoute.paramMap
       .subscribe((route: ParamMap) => {
         console.log('Route: ', route);
