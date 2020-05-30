@@ -2,6 +2,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { City } from '../shared/model/city.model';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { OrderService } from '../shared/services/order.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { CityService } from '../shared/services/city.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-city-detail',
@@ -10,16 +13,40 @@ import { OrderService } from '../shared/services/order.service';
 })
 export class CityDetailComponent implements OnInit {
 
-  @Input() city: City;
+  //  @Input() city: City;
+  city: City;
+  id: number;
   @Output() incrementing = new EventEmitter<number>();
   @Output() decrementing = new EventEmitter<number>();
 
   thumbsUpIcon = faThumbsUp;
   thumbsDownIcon = faThumbsDown;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private cityService: CityService,
+    private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap
+      .subscribe((route: ParamMap) => {
+        console.log('Route: ', route);
+        this.id = parseInt(route.get('id'));
+
+        this.cityService.getCity(this.id)
+          .subscribe(
+            (res: City) => {
+              console.log('Received city ', res);
+              // get new list
+              this.city = res;
+            },
+            err => {
+              console.error('Error during get city ', this.id, ': ', err);
+            },
+            () => {
+              console.log('getCity ready');
+            }
+          )
+      })
   }
 
   showHighLights(): boolean {

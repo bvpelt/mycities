@@ -37,14 +37,15 @@ export class CityService {
       .set('content-type', 'application/json')
       .set('Cache-Control', 'max-age=30 must-revalidate');
 
-    return this.http.get<City>(`${this.url}/${id}`, { 'headers': headers }).pipe(
-      tap(result => console.log('Opgehaald via: ', this.url, '/', id, ' result:', result)),
-      catchError(err => {
-        console.log('Get geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
-        // De methode moet een observable terug geven
-        // genereer daarom een observable op basis van err
-        return of(err);
-      }));
+    return this.http.get<City>(`${this.url}/${id}`, { 'headers': headers })
+      .pipe(
+        tap(result => console.log('Opgehaald via: ', this.url, '/', id, ' result:', result)),
+        catchError(err => {
+          console.log('Get geen API gevonden\nStart eerst de json-server met\n"npm run json-server"');
+          // De methode moet een observable terug geven
+          // genereer daarom een observable op basis van err
+          return of(err);
+        }));
   }
 
   addCity(city: City): Observable<City | any> {

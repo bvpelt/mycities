@@ -14,6 +14,9 @@ import { CityDetailComponent } from './city-detail/city-detail.component';
 import { CityHighlightsComponent } from './city-highlights/city-highlights.component';
 import { CityOrderComponent } from './city-order/city-order.component'
 import { OrderService } from './shared/services/order.service';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { CityAddComponent } from './city-add/city-add.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { OrderService } from './shared/services/order.service';
     MovieComponent,
     CityDetailComponent,
     CityHighlightsComponent,
-    CityOrderComponent
+    CityOrderComponent,
+    HomeComponent,
+    CityAddComponent
   ],
   imports: [
     BrowserModule,
