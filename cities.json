@@ -18,8 +18,8 @@
       "name": "Den Haag",
       "province": "Zuid Holland",
       "price": 139,
-      "posrating": 0,
-      "negrating": 0,
+      "posrating": 3,
+      "negrating": 2,
       "highlights": [
         "Binnenhof",
         "Madurodam"
@@ -46,8 +46,8 @@
       "name": "Hengelo",
       "province": "Overijssel",
       "price": 76,
-      "posrating": 0,
-      "negrating": 0,
+      "posrating": 11,
+      "negrating": 3,
       "highlights": [
         "Waterstaatskerk",
         "Schouwburg Hengelo"
@@ -59,8 +59,8 @@
       "name": "Haarlem",
       "province": "Zuid Holland",
       "price": 92,
-      "posrating": 0,
-      "negrating": 0,
+      "posrating": 4,
+      "negrating": 1,
       "highlights": [
         "Teylers museum",
         "Grote Markt",
@@ -75,8 +75,8 @@
       "name": "Amsterdam",
       "province": "Noord Holland",
       "price": 168,
-      "posrating": 0,
-      "negrating": 0,
+      "posrating": 8,
+      "negrating": 1,
       "highlights": []
     },
     {
@@ -84,8 +84,8 @@
       "name": "Rotterdam",
       "province": "Zuid Holland",
       "price": 152,
-      "posrating": 0,
-      "negrating": 0,
+      "posrating": 10,
+      "negrating": 2,
       "highlights": []
     },
     {
@@ -93,7 +93,7 @@
       "name": "Veenendaal",
       "province": "Utrecht",
       "price": 69,
-      "posrating": 4,
+      "posrating": 6,
       "negrating": 2,
       "highlights": null
     }
