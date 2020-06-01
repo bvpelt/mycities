@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>{{title}}</h1>
+
+    <ul class="list-group">
+        <div class="list-group" *ngFor="let city of cities$ | async; let i=index">
+            <div class="row">
+                <div class="col-sm-11">
+                    <a class="list-group-item clearfix" [routerLink]="['/detail', city.id]">
+                        {{ city.id}} - {{ city.name}} ( {{city.province}} )
+                    </a>
+                </div>
+                <div class="col-sm-1">
+                    <span class="badge badge-dark ">{{city.posrating}}</span>
+                    <span class="badge badge-dark ">{{city.negrating}}</span>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>

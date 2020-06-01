@@ -10,19 +10,29 @@
         Boek nu!
     </button>
 </div>
-<ul class="list-group list-group-root">
-    <li class="list-group-item">Naam: {{city.name}}</li>
-    <li class="list-group-item">Prijs weekend: {{city.price | currency: 'EUR':'symbol':'1.2'}}</li>
-    <li class="list-group-item">Positive: {{city.posrating}}</li>
-    <li class="list-group-item">Negative: {{city.negrating}}</li>
-    <li class="list-group-item">Provincie: {{city.province}}</li>
-    <div *ngIf="showHighLights()">
-        <li class="list-group-item">highlights
-            <app-city-highlights [highlights]="city.highlights"></app-city-highlights>
-        </li>
+<div *ngIf="city">
+    <div class="card">
+        <div class="card-header">
+            <h1>{{city.name}}</h1>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-root">
+                <li class="list-group-item">Prijs weekend: {{city.price | currency: 'EUR':'symbol':'1.2'}}</li>
+                <li class="list-group-item">Positive: {{city.posrating}}</li>
+                <li class="list-group-item">Negative: {{city.negrating}}</li>
+                <li class="list-group-item">Provincie: {{city.province}}</li>
+                <div *ngIf="showHighLights()">
+                    <li class="list-group-item">highlights
+                        <app-city-highlights [highlights]="city.highlights"></app-city-highlights>
+                    </li>
+                </div>
+                <li class="list-group-item">Photo: {{ city.photo }}</li>
+            </ul>
+            <div *ngIf="city.photo">
+                <img src={{city.photo}} class="card-img-bottom img-responsive img-rounded" alt="{{city.name}}"
+                    width="100%">
+            </div>
+        </div>
+        <div class="card-footer">{{restrictions}}</div>
     </div>
-    <li class="list-group-item">Photo: {{ city.photo }}</li>
-</ul>
-<div *ngIf="city.photo">
-    <img src={{city.photo}} class="img-responsive img-rounded" alt="{{city.name}}" width="100%">
 </div>

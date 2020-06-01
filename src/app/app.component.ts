@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.title = 'Mijn favoriete steden';
+    this.title = 'Cities Demo';
     this.cities$ = this.cityService.getCities();
   }
 
